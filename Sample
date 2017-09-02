@@ -1,0 +1,143 @@
+
+##***************************************************************
+
+#               COPYRIGHT (c) 2016-2017 Msolutions
+#                         All Rights Reserved
+#
+# The source code contained or described herein and all documents
+# related to the source code ("Material") are owned by Msolutions
+# or its licensors.  Title to the Material remains
+# with Msolutions or its suppliers and licensors.
+#
+# The Material is protected by worldwide copyright and trade secret
+# laws and treaty provisions. No part of the Material may be used,
+# copied, reproduced, modified, published, uploaded, posted, transmitted,
+# distributed, or disclosed in any way except in accordance with the
+# applicable license agreement.
+#
+# No license under any patent, copyright, trade secret or other
+# intellectual property right is granted to or conferred upon you by
+# disclosure or delivery of the Materials, either expressly, by
+# implication, inducement, estoppel, except in accordance with the
+# applicable license agreement.
+#
+# Unless otherwise agreed by Msolutions in writing, you may not remove or
+# alter this notice or any other notice embedded in Materials by Msolutions
+# or Msolutions suppliers or licensors in any way.
+#
+# $RCSfile: xxx.py,v $
+#
+# Description : 
+#*****************************************************************/
+from flask import Flask,render_template
+import datetime
+from flask import request, redirect,url_for,send_from_directory
+import smbus
+import math
+import PIL
+from PIL import ImageTk,Image
+from subprocess import*
+import tkFont
+import random
+from threading import Timer
+import threading
+import time
+import os
+from multiprocessing import Value
+import csv
+import collections
+from collections import OrderedDict
+import datetime
+import xlrd
+import xlsxwriter
+import socket
+import threading
+import os.path
+#from fpdf import FPDF
+
+#import matplotlib
+#import matplotlib.pyplot as plt
+#matplotlib.use('Agg')
+import datetime as dt
+import re
+c=threading.Condition()
+pflag=0
+
+
+######### style module #################
+screenwidth=320
+screenheight=480
+
+hdfont="Bodoni MT Poster Compressed"
+hdsize=11
+hdcolour="Yellow"
+
+datafont="Bodoni MT Poster Compressed"
+datasize=11
+datacolour="White"
+global var1
+global var2
+gphwinwid=310
+gphwinheg=200
+gphstartx=20
+gphwidx=30
+
+gphwidy=50
+global content
+global webcount
+
+
+app = Flask(__name__)
+
+####################
+  # @brief    The url '/' tells the flask that the function index1() should be triggered
+  # @note     This function first returns a temperoray page to  fetch the browser time  which in turn calls the function again and returns the index page
+  # returnval This function returns the index page 
+####################
+
+@app.route("/")
+def index1():
+ 
+  return render_template('admin.html')
+
+
+
+####################
+  # @brief    The url '/admin' tells the flask that the function show_admin() should be triggered
+  # @note     
+  # returnval This function returns the setup screen
+#################### 
+@app.route('/admin', methods=['GET', 'POST'])
+def show_admin():
+ tab={'tabconfig':'taba', 'tabperfo':'tab','tabtrans':'tab1','tabrec':'tab1','tabtxmaxerr':'tab2','tabrxmaxerr':'tab2','tabtxmseerr':'tab2','tabrxmseerr':'tab2','tabbasic':'tab'}
+ username=request.form['username']
+ password= request.form['password']
+
+ print username,password
+ return render_template('admin.html')
+
+
+
+
+ 
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80, debug=True)
+
+
+     
+
+root.mainloop()
+{% block content %}
+<form method="post" id="new_message" action="/admin" >
+
+<input class="lenpixel" type="text" name="username" > 
+</div><div class="toggle">        <input type="password" class="password" name="password"  placeholder="Password" ></input>  <br><br></div>
+
+<button  class="contupd" type="submit" value="Send" name="send" id="message_submit" >Submit </button>
+
+
+
+</form>
+
+{% endblock %}
